@@ -8,3 +8,9 @@ class Drug(models.Model):
     available_quantity = models.IntegerField(default=0)
     unit_price = models.DecimalField(default=0.0)
     pub_date = models.DateTimeField('Date Updated')
+
+
+class Cart(models.Model):
+    drug = models.ForeignKey(Drug)
+    quantity = models.IntegerField(default=0)
+    amount = models.DecimalField(default=0.0)
