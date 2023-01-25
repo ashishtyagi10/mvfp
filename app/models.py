@@ -30,7 +30,7 @@ class Item(models.Model):
         return reverse("app:add-to-cart", kwargs={"pk": self.pk})
 
     def get_remove_from_cart_url(self):
-        return reverse("core:remove-from-cart", kwargs={
+        return reverse("app:remove-from-cart", kwargs={
             "pk": self.pk
         })
 
