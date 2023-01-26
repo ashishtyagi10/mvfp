@@ -22,6 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-7&6dje!0+l1h$kgfypnrj2tnwl=f1e@wd6o#kgz@gk!iqwic_u"
+STRIPE_KEY = "pk_test_51MUc2kBlSicBO4wlZBOzkHAY8NFhNBZio6jI94AC11zkcd5NFuEwfYdxNTt9youm7gmjx8jP24aVlEdnm5bsWCCv00A3BPbXPu"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'django_countries',
 
     'app',
 ]
