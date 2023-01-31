@@ -17,97 +17,42 @@
   <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet">
   <!-- Your custom styles (optional) -->
   <link href=" {% static 'css/style.min.css' %}" rel="stylesheet">
-  <style type="text/css">
-    html,
-    body,
-    header,
-    .carousel {
-      height: 70vh;
-    }
-
-    @media (max-width: 740px) {
-
-      html,
-      body,
-      header,
-      .carousel {
-        height: 100vh;
-      }
-    }
-
-    @media (min-width: 800px) and (max-width: 850px) {
-
-      html,
-      body,
-      header,
-      .carousel {
-        height: 100vh;
-      }
-    }
-  </style>
-    {% block extra_head %}
-    {% endblock extra_head %}
 </head>
 
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
-    <div class="container">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd;">
+    <div class="container-fluid">
       <!-- Brand -->
-      <a class="navbar-brand waves-effect" href="/">
-        <strong class="blue-text">MV&F Pharmaceutical</strong>
-      </a>
+      <a class="navbar-brand" href="/">MV&F Pharmaceutical</a>
 
       <!-- Collapse -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <!-- Links -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <!-- Left -->
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-          </li>
-        </ul>
-
-        <!-- Right -->
-        <ul class="navbar-nav nav-flex-icons mr-auto">
-          <li class="nav-item">
-            <a class="active nav-link waves-effect" href="/"><i class="fas fa-home"></i>Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href={% url 'app:products' %}><i class="fas fa-list"></i>Products</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href={% url 'app:about' %}><i class="fas fa-address-card"></i>About Us</a>
-          </li>
-            {% if user.is_authenticated %}
-            <li class="nav-item">
-                <a href="{% url 'app:order-summary' %}" class="nav-link waves-effect">
-                {% if request.user|cart_item_count != 0 %}
-                  <span class="badge red z-depth-1 mr-1"> {{ request.user|cart_item_count }} </span>
-                {% endif %}
-                <i class="fas fa-shopping-cart"></i>
-                <span class="clearfix d-none d-sm-inline-block"> Cart </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                 <a class="nav-link waves-effect">
-                Hi {{ user.username }}!
-                </a>
-            </li>
-             </li class="nav-item">
-                <a class="nav-link waves-effect" href="{% url 'logout' %}"> Logout</a>
-            </li>
-            {% else %}
-             </li class="nav-item">
-                <a class="nav-link waves-effect" href="{% url 'login' %}"> Login/Sign Up</a>
-            </li>
-            {% endif %}
-        </ul>
+        <div class="nav nav-pills ms-auto mb-2 mb-lg-0">
+          <a class="nav-link active mr-2" href="/">Home</a>
+          <a class="nav-link " href={% url 'app:products' %}>Products</a>
+          <a class="nav-link " href={% url 'app:about' %}>About Us</a>
+          {% if user.is_authenticated %}         
+              <a href="{% url 'app:order-summary' %}" class="nav-link ">
+              {% if request.user|cart_item_count != 0 %}
+                <span class="badge red z-depth-1 mr-1"> {{ request.user|cart_item_count }} </span>
+              {% endif %}
+              <i class="fas fa-shopping-cart"></i>
+              <span class="clearfix d-none d-sm-inline-block">Cart</span>
+              </a>
+              <a class="nav-link ">Hi {{ user.username }}!</a>
+              <a class="nav-link " href="{% url 'logout' %}"> Logout</a>
+          {% else %}
+              <a class="nav-link " href="{% url 'login' %}"> Login/Sign Up</a>
+          {% endif %}
+        </div>
       </div>
     </div>
   </nav>
