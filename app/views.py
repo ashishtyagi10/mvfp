@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView, DetailView, View
+from django.views.generic import ListView, DetailView, View, TemplateView
 from django.utils import timezone
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ObjectDoesNotExist
@@ -27,6 +27,15 @@ stripe.api_key = settings.STRIPE_KEY
 class HomeView(ListView):
     model = Item
     template_name = "home.html"
+
+
+class AboutView(TemplateView):
+    template_name = "about.html"
+
+
+class ProductsView(ListView):
+    model = Item
+    template_name = "products.html"
 
 
 class ProductView(DetailView):
