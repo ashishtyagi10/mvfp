@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['mvfp-dkgxkuxpoa-ue.a.run.app',
 
 CSRF_TRUSTED_ORIGINS = ['https://mvfp-dkgxkuxpoa-ue.a.run.app']
 
+
 # Application definition
 
 INSTALLED_APPS = [
