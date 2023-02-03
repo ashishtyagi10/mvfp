@@ -27,10 +27,10 @@ STRIPE_KEY = "pk_test_51MUc2kBlSicBO4wlZBOzkHAY8NFhNBZio6jI94AC11zkcd5NFuEwfYdxN
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['mvfp-dkgxkuxpoa-uc.a.run.app',
-                 '127.0.0.1', '[::1]', '.localhost', 'https://mvfp-dkgxkuxpoa-uc.a.run.app']
+ALLOWED_HOSTS = ['mvfp-dkgxkuxpoa-ue.a.run.app',
+                 '127.0.0.1', '[::1]', '.localhost', 'https://mvfp-dkgxkuxpoa-ue.a.run.app']
 
-CSRF_TRUSTED_ORIGINS = ['https://mvfp-dkgxkuxpoa-uc.a.run.app']
+CSRF_TRUSTED_ORIGINS = ['https://mvfp-dkgxkuxpoa-ue.a.run.app']
 
 # Application definition
 
