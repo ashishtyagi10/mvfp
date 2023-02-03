@@ -181,7 +181,6 @@ class PaymentView(View):
 
 
 @login_required
-@csrf_exempt
 def add_to_cart(request, pk):
     item = get_object_or_404(Item, pk=pk)
     order_item, created = OrderItem.objects.get_or_create(
@@ -213,7 +212,6 @@ def add_to_cart(request, pk):
 
 
 @login_required
-@csrf_exempt
 def remove_from_cart(request, pk):
     item = get_object_or_404(Item, pk=pk)
     order_qs = Order.objects.filter(
@@ -242,7 +240,6 @@ def remove_from_cart(request, pk):
 
 
 @login_required
-@csrf_exempt
 def reduce_quantity_item(request, pk):
     item = get_object_or_404(Item, pk=pk)
     order_qs = Order.objects.filter(
