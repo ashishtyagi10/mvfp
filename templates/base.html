@@ -19,45 +19,43 @@
   <link href=" {% static 'css/style.min.css' %}" rel="stylesheet">
 </head>
 
-<body>
-
+<body class="d-flex flex-column h-100">
+  <main class="flex-shrink-0">
   <!-- Navbar -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd;">
-    <div class="container-fluid">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <div class="container px-5">
       <!-- Brand -->
-      <a class="navbar-brand" href="/">MV&F Pharmaceutical</a>
-
+      <a class="navbar-brand" href="/">F & M.V. Pharmaceutical</a>
       <!-- Collapse -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <!-- Links -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="nav nav-pills ms-auto mb-2 mb-lg-0">
-          <a class="nav-link active mr-2" href="/">Home</a>
-          <a class="nav-link " href={% url 'app:products' %}>Products</a>
-          <a class="nav-link " href={% url 'app:about' %}>About Us</a>
+        <div class="nav ms-auto mb-2 mb-lg-0">
+          <a class="nav-item nav-link active mr-2" href="/">Home</a>
+          <a class="nav-item nav-link " href={% url 'app:products' %}>Products</a>
+          <a class="nav-item nav-link " href={% url 'app:about' %}>About Us</a>
           {% if user.is_authenticated %}         
               <a href="{% url 'app:order-summary' %}" class="nav-link ">
               {% if request.user|cart_item_count != 0 %}
-                <span class="badge red z-depth-1 mr-1"> {{ request.user|cart_item_count }} </span>
+                <span class="badge badge-primary z-depth-1 mr-1"> {{ request.user|cart_item_count }} </span>
               {% endif %}
               <i class="fas fa-shopping-cart"></i>
               <span class="clearfix d-none d-sm-inline-block">Cart</span>
               </a>
-              <a class="nav-link ">Hi {{ user.username }}!</a>
-              <a class="nav-link " href="{% url 'logout' %}"> Logout</a>
+              <a class="nav-item nav-link ">Hi {{ user.username }}!</a>
+              <a class="nav-item nav-link " href="{% url 'logout' %}"> Logout</a>
           {% else %}
-              <a class="nav-link " href="{% url 'login' %}"> Login/Sign Up</a>
+              <a class="nav-item nav-link " href="{% url 'login' %}"> Login/Sign Up</a>
           {% endif %}
         </div>
       </div>
     </div>
   </nav>
   <!-- Navbar -->
-  <div class="mt-5 pt-4">
+  <div>
     {% if messages %}
       {% for message in messages %}
         <div class="alert alert-{{message.tags}}" role="alert">
@@ -65,13 +63,11 @@
         </div>
       {% endfor %}
     {% endif %}
-    </div>
-
+      </div>
     {% block content %}
     {% endblock content %}
-
+  </main>
     {% include "footer.html" %}
-
 
     {% include "script.html" %}
 
