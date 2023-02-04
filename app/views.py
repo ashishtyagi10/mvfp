@@ -18,6 +18,7 @@ from .models import (
     OrderItem,
     CheckoutAddress,
     Payment,
+    Category,
 )
 from .forms import CheckoutForm
 # Create your views here.
@@ -27,6 +28,12 @@ stripe.api_key = settings.STRIPE_KEY
 class HomeView(ListView):
     model = Item
     template_name = "home.html"
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(HomeView, self).get_context_data(*args, **kwargs)
+        categories = Category.objects.all()
+        context['categories'] = categories
+        return context
 
 
 class AboutView(TemplateView):
